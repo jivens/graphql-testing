@@ -1,0 +1,24 @@
+{
+  "name": "graphql-testing",
+  "version": "1.0.0",
+  "description": "A place to test GraphQL implementations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jivens/graphql-testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jivens/graphql-testing/issues"
+  },
+  "homepage": "https://github.com/jivens/graphql-testing#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.0"
+  }
+}
