@@ -34,17 +34,32 @@ sequelize
 //
 // User model for sequelize
 //
-const User = sequelize.define('user', {
+const Book = sequelize.define('book', {
   name: { type: Sequelize.STRING },
-  email: { type: Sequelize.STRING },
-  password: { type: Sequelize.STRING },
-  roles: { type: Sequelize.STRING }
+  genre: { type: Sequelize.STRING },
+  authorId: { type: Sequelize.STRING }
 },
 {
   charset: 'utf8mb4',
   collate: 'utf8mb4_unicode_ci'
 });
 
+const Author = sequelize.define('author', {
+  name: { type: Sequelize.STRING },
+  age: { type: Sequelize.INTEGER }
+},
+{
+  charset: 'utf8mb4',
+  collate: 'utf8mb4_unicode_ci'
+});
+
+// force: true will drop the table if it already exists
+// Book
+// .sync({force: true});
+// Author
+// .sync({force: true});
+
 module.exports = {
-  User
+  Book,
+  Author
 };
