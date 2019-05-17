@@ -8,6 +8,9 @@ const {
   GraphQLList
 } = graphql;
 const _ = require('lodash');
+const { // define mysql connectors
+  User
+} = require('../connectors/mysqlDB');
 
 // dummy data
 var books = [
