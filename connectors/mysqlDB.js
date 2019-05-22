@@ -3,6 +3,7 @@ require('dotenv').config();
 // ORM (Object-Relational Mapper library)
 const Sequelize = require('sequelize');
 
+
 // ****** Set up default MYSQL connection START ****** //
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -53,13 +54,54 @@ const Author = sequelize.define('author', {
   collate: 'utf8mb4_unicode_ci'
 });
 
+const Root = sequelize.define('root', {
+  root: { type: Sequelize.STRING },
+  number: { type: Sequelize.INTEGER },
+  salish: { type: Sequelize.STRING },
+  nicodemus: { type: Sequelize.STRING },
+  english: { type: Sequelize.STRING }
+},
+{
+  charset: 'utf8mb4',
+  collate: 'utf8mb4_unicode_ci'
+});
+
 // force: true will drop the table if it already exists
 // Book
 // .sync({force: true});
 // Author
 // .sync({force: true});
 
+async function makeRootTable() {
+  await Root.sync({force: true});
+  await Root.create({
+    root: "√a",
+    number: 1,
+    salish: "a",
+    nicodemus: "a",
+    english: "†  hello. (gr.)"
+  });
+
+  var fs = require('fs');
+  var contents = fs.readFileSync('/Users/johnw/Documents/COLRC/data_files/entries.txt', 'utf8');
+  var rows = contents.split("\n");
+  rows.forEach(async function (row, index) {
+    columns = row.split(":::");
+    await Root.create({
+      root: columns[2],
+      number: parseInt(columns[3]),
+      salish: columns[4],
+      nicodemus: columns[5],
+      english: columns[6]
+    });
+  });
+  console.log("I added all the roots to the table");
+}
+
+//makeRootTable();
+
 module.exports = {
   Book,
-  Author
+  Author,
+  Root
 };

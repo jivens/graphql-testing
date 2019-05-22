@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jivens/graphql-testing#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-graphql": "^0.8.0",
